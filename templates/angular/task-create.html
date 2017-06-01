@@ -1,0 +1,60 @@
+<form class="form-horizontal" ng-submit="doCreateTask(task)">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Create Task</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="fn">Title</label>  
+  <div class="col-md-4">
+  <input ng-model="task.title" name="title" type="text" placeholder="Task Title" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="ln">Description</label>  
+  <div class="col-md-4">
+  <input ng-model="task.description" name="description" type="text" placeholder="Task Description" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="deadline">Deadline</label>  
+  <div class="col-md-4">
+  <input ng-model="task.deadline" name="deadline" type="date" placeholder="Deadline" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+
+
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="selectbasic">Task type</label>
+  <div class="col-md-4">
+    <select ng-model="task.tasktype" name="tasktype" class="form-control input-md">
+      <option value="False">Public</option>
+      <option value="True">Private</option>
+    </select>
+  </div>
+</div>
+
+
+
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit"></label>
+  <div class="col-md-4">
+    <button id="submit" name="submit" class="btn btn-primary">SUBMIT</button>
+  </div>
+</div>
+
+</fieldset>
+</form>

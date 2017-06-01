@@ -58,10 +58,13 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
 
+    'rest_framework',
+
     'taskcreator'
 ]
 
 SITE_ID = 1
+REST_USE_JWT = True
 AUTHENTICATION_BACKENDS = (
     
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -74,10 +77,10 @@ AUTHENTICATION_BACKENDS = (
 
 #AllAuth Configuration
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_CONFIRM_EMAIL_ON_GET = False
 ACCOUNT_UNIQUE_EMAIL = True
-ACCOUNT_EMAIL_VERIFICATION = "mandatory"
-
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = False
+LOGIN_REDIRECT_URL = '/login/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -119,7 +122,12 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -157,6 +165,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'static_cdn')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'media_cdn')
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 
 STATICFILES_DIRS = [

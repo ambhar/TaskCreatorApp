@@ -15,8 +15,22 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.views.generic.base import TemplateView
+from rest_framework_jwt.views import obtain_jwt_token
+from angular.views import HomeTemplateView, AccountTemplateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^api/',include('taskcreator.api.urls', namespace="tasks-api")),
+    url(r'^api/auth/token/', obtain_jwt_token),
+    
+    url(r'accounts/^(?P<item>[A-Za-z0-9\_\-\.\/]+)\.html$', AccountTemplateView.as_view()),
     url(r'^accounts/', include('allauth.urls')),
+
+    url(r'^(?P<item>[A-Za-z0-9\_\-\.\/]+)\.html$', HomeTemplateView.as_view()),
+    
+]
+urlpatterns += [
+        url(r'', TemplateView.as_view(template_name='angular/home.html')),
+
 ]

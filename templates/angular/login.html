@@ -1,0 +1,20 @@
+<div class="jumbotron col-sm-6 col-sm-offset-3">
+
+
+
+<p>If you have not created an account yet, then please
+<a href="/signup/">sign up</a> first.</p>
+
+<center>
+<form class="login ng-pristine ng-invalid ng-invalid-required ng-valid-maxlength" method="POST" ng-submit="doLogin(user)"> <!-- action="/accounts/login/"-->
+  {% csrf_token %}
+  <p><label for="id_login">Username:</label> <input type="text" ng-model="user.username" name="login" autofocus="autofocus" required="" placeholder="Username" id="id_login" maxlength="150" class="ng-pristine ng-empty ng-invalid ng-invalid-required ng-valid-maxlength ng-touched" class="pull-right"></p>
+  <p><label for="id_password">Password:</label> <input type="password" ng-model="user.password" name="password" required="" placeholder="Password" id="id_password" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" class="pull-right"></p>
+  
+  <div ng-if="loginMessage" style="color:red"><b>{$ loginMessage $}</b></div>
+  <!--<a class="button secondaryAction" href="/accounts/password/reset/">Forgot Password?</a>-->
+  <center><button class="primaryAction btn btn-primary" type="submit">Sign In</button>
+</form>
+
+</center>
+</div>

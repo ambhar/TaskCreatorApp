@@ -1,0 +1,61 @@
+<div ng-show="loggedin">
+    <div class="container">
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="well">
+                
+                <div class="input-group col-sm-10">
+                    <span class="input-group-btn pull-right" onclick="addComment()">     
+                        <a href="/create/" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-comment"></span> Add Task</a>
+                    </span>
+                </div>
+                <ul class="nav nav-tabs">
+                  <li><a data-toggle="tab" href="#mytasks">My Tasks</a></li>
+                  <li><a data-toggle="tab" href="#publictasks">Public Tasks</a></li>
+                  
+                </ul>
+
+                <div class="tab-content">
+                  <div id="mytasks" class="tab-pane fade in active">
+                    <br>
+                    <h4 style="color:grey">My Tasks</h4>
+                    <hr style="height:1px; background:grey;">
+                    <p dir-paginate="mytask in privateTaskList | orderBy: '-created_at' | itemsPerPage:3" style="color:grey;font-size:16px" pagination-id="private">
+                        <strong class="pull-left primary-font">Title : </strong> <i> &nbsp;{$ mytask.title $}</i>
+                        <small class="pull-right text-muted">
+                           <span class="glyphicon glyphicon-time"></span> {$ mytask.created_at | timeAgo $} <br><strong class=" primary-font"><span ng-hide="mytask.is_private">Public Task</span><span ng-show="mytask.is_private">Private Task</span></strong>  </small>
+
+                        </br>
+                        <strong class="pull-left primary-font">Deadline : </strong> <i> &nbsp;{$ mytask.deadline $}</i>
+                        <br>
+
+                        <strong class="pull-left primary-font">Description : </strong> <i> &nbsp;{$ mytask.description $}</i>
+                        </br>                    
+                    </p>
+                    <center><dir-pagination-controls pagination-id="private"></dir-pagination-controls></center>
+                    
+                  </div>
+                  <div id="publictasks" class="tab-pane fade">
+                    <br>
+                    <h4 style="color:grey">Public Tasks</h4>
+                    <hr style="height:1px; background:grey;">
+                    <p dir-paginate="task in publictaskList | orderBy: '-created_at' | itemsPerPage:3" style="color:grey;font-size:16px" pagination-id="public">
+                        <strong class="pull-left primary-font">Title : </strong> <i> &nbsp;{$ task.title $}</i>
+                        <small class="pull-right text-muted">
+                           <span class="glyphicon glyphicon-time"></span> {$ task.created_at | timeAgo $} <br><strong class=" primary-font">Public Task</strong>  </small>
+
+                        </br>
+                        <strong class="pull-left primary-font">Deadline : </strong> <i> &nbsp;{$ task.deadline $}</i>
+                        <br>
+                        <strong class="pull-left primary-font">Description : </strong> <i> &nbsp;{$ task.description $}</i>
+                        </br>
+                        </br>
+                    </p>
+                    <center><dir-pagination-controls pagination-id="public"></dir-pagination-controls></center>
+                  </div>
+                  
+                </div>
+            
+                
+        </div>
+    </div>
+</div>

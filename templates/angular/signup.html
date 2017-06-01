@@ -1,0 +1,16 @@
+<div class="jumbotron col-sm-6 col-sm-offset-3">
+<p>Already have an account? Then please <a href="/login/">sign in</a>.</p>
+
+
+
+     <form class="signup ng-pristine ng-valid" id="signup_form" method="post" action="/accounts/signup/">{% csrf_token %}
+        
+        <p><label for="id_username">Username:</label> <input type="text" name="username" maxlength="150" minlength="1" autofocus="autofocus" required="" placeholder="Username" id="id_username" class="pull-right"></p>
+        <p><label for="id_email">E-mail:</label> <input type="email" name="email" required="" placeholder="E-mail address" id="id_email" class="pull-right"></p>
+        <p><label for="id_password1">Password:</label> <input type="password" name="password1" required="" placeholder="Password" id="id_password1" class="pull-right"></p>
+        <p><label for="id_password2">Password (again):</label> <input type="password" name="password2" required="" placeholder="Password (again)" id="id_password2" class="pull-right"></p>
+      
+      <center><button type="submit" class="btn btn-primary">Sign Up &raquo;</button></center>
+    </form>
+</div>
+  

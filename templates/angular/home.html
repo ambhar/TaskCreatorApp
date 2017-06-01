@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="/">
+    {% load static %}
+
+    <title>{% block head_title %}{% endblock %}</title>
+    {% block extra_head %}
+    {% endblock %}
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    
+    
+
+  </head>
+  <body ng-app="taskapp" ng-controller="appController">
+
+    {% block body %}
+  <div class="container">
+    
+  
+      <div class="header clearfix">
+         <nav-bar></nav-bar>
+        
+      </div>
+      <div>
+        <div ng-view>
+        
+        </div>
+          {% block content %}
+          {% endblock %}
+      </div>
+      
+    {% endblock %}
+
+         
+      
+      
+    
+    
+
+   
+    
+  </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- load angular, nganimate, and ui-router -->
+
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-cookies.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js'></script>
+    <script src="{% static 'js/moment.js' %}"></script>
+    <script src="{% static 'js/dirPagination.js' %}"></script>
+    <script src="{% static 'app/app.module.js' %}"></script>
+    <script src="{% static 'app/app.config.js' %}"></script>
+
+    <script src="{% static 'app/task-create/task-create.module.js' %}"></script>
+    <script src="{% static 'app/task-create/task-create.component.js' %}"></script>
+
+    <script src="{% static 'app/user-login/user-login.module.js' %}"></script>
+    <script src="{% static 'app/user-login/user-login.component.js' %}"></script>
+
+    <script src="{% static 'app/homepage/homepage.module.js' %}"></script>
+    <script src="{% static 'app/homepage/homepage.component.js' %}"></script>
+
+    <script src="{% static 'app/nav-bar/nav-bar.module.js' %}"></script>
+    <script src="{% static 'app/nav-bar/nav-bar.component.js' %}"></script>
+</html>
